@@ -1,23 +1,43 @@
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { User } from "../models/user";
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
 
-    private isLoggedUser: BehaviorSubject<any> | undefined;
+    public isLoggedUser: Subject<any> | undefined;
+    private url = 'https://localhost:7076'
 
-    constructor() {
-        this.isLoggedUser = new BehaviorSubject<User>(new User());
+    constructor(private http: HttpClient,
+        private router: Router) {
+            this.isLoggedUser = new Subject<any>();
     }
 
     public getUserStatus(): User {
-        this.isLoggedUser = new BehaviorSubject<User>(JSON.parse(localStorage.getItem("userCredentials") || '{}'))
-        return new User();
+        return JSON.parse(localStorage.getItem("userCredentials") || '{}');
     }
 
     login(username: string, password: string){
-
+        var user = new User();
+        user.username = username;
+        user.password = password;
+        
+        this.http.post<any>(this.url+`/api/Auth/sign-in`, user).subscribe(
+          (data) => {
+            debugger
+            if(data.token != null){
+                user.token = data.token
+                user.password = ''
+                localStorage.setItem("userCredentials", JSON.stringify(user))
+                this.isLoggedUser?.next(JSON.parse(localStorage.getItem("userCredentials") || '{}'))
+            }
+          },
+          (error) => {
+            console.error('POST request error:', error);
+          }
+        );
     }
 
 

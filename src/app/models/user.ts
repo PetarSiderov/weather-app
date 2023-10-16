@@ -1,4 +1,7 @@
 export class User {
+    constructor(){
+        
+    }
     id: number | undefined;
     username!: string;
     password!: string;

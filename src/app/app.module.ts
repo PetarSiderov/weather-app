@@ -18,6 +18,8 @@ import { SignUpComponent } from './sign-up/sign-up.component'
 import { AuthenticationService } from './authentication/authentication.service';
 import { WeatherComponent } from './weather/weather.component';
 import { HeaderComponent } from './header/header.component';
+import { LoginService } from './login/login.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatButtonModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
@@ -42,7 +45,8 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     MatDialogModule,
   ],
-  providers: [AuthenticationService],
+  exports: [LoginComponent],
+  providers: [AuthenticationService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

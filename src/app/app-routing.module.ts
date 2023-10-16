@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent,  canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent,  canActivate: [AuthGuard] },
   { path: 'sign-up', component: SignUpComponent, canActivate: [AuthGuard] },
-  { path: 'weather', component: WeatherComponent,canActivate: [AuthGuard] }
+  { path: 'weather', component: WeatherComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
