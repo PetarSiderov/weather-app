@@ -15,11 +15,14 @@ import { MatCardModule } from '@angular/material/card';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { SignUpComponent } from './sign-up/sign-up.component'
+import { AuthenticationService } from './authentication/authentication.service';
+import { WeatherComponent } from './weather/weather.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { SignUpComponent } from './sign-up/sign-up.component'
     FormsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
