@@ -17,12 +17,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SignUpComponent } from './sign-up/sign-up.component'
 import { AuthenticationService } from './authentication/authentication.service';
 import { WeatherComponent } from './weather/weather.component';
+import { HeaderComponent } from './header/header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    WeatherComponent
+    WeatherComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { WeatherComponent } from './weather/weather.component';
     BrowserAnimationsModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

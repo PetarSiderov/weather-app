@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  isClicked: boolean = false;
 
   constructor(private router: Router){
     
   }
 
   login() {
+    this.isClicked = true
     // Add your login logic here, such as sending a request to your backend for authentication.
   }
 
