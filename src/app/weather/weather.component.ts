@@ -9,7 +9,7 @@ export class WeatherComponent {
    elements: any
     daily = [
       {
-          dt: new Date(1697623200).toDateString(),
+          dt: new Date(1697623200* 1000).toDateString(),
           sunrise: 1697604561,
           sunset: 1697644161,
           moonrise: 1697618820,
