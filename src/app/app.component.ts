@@ -30,6 +30,10 @@ export class AppComponent extends Component implements OnInit {
         this.isLogged = true;
         this.router.navigate(["/weather"])
       }
+      else{
+        this.isLogged = false;
+        this.router.navigate(['/login'])
+      }
     })
   }
 }

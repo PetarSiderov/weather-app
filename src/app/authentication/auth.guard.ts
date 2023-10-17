@@ -13,6 +13,11 @@ export class AuthGuard implements CanActivate {
         const currentUser = this.authenticationService.getUserStatus();
         if (Object.keys(currentUser).length) {
             // authorised so return true
+            debugger
+            if(state.url == '/' || state.url == '/login' || state.url == '/sign-up'){
+                this.router.navigate(['/weather'])
+                return false;
+            }
             return true;
         }
         else { 

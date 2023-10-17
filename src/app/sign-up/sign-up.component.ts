@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication/authentication.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,19 +11,30 @@ import { Router } from '@angular/router';
 export class SignUpComponent {
   username: string = '';
   password: string = '';
+  email: string = '';
+  firstName: string = '';
+  lastName: string = '';
   isClicked: boolean = false;
   /**
    *
    */
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthenticationService) {
     
   }
 
   signup() {
     debugger
     this.isClicked = true;
-    console.log(this.username)
-    // Add your login logic here, such as sending a request to your backend for authentication.
+    if(this.email == '' || this.firstName == '' ||  this.lastName == '' ||  this.email == '' || this.password == ''){
+      return;
+    }
+    var user = new User()
+    user.firstName = this.firstName;
+    user.lastName = this.lastName;
+    user.password = this.password;
+    user.username = this.username;
+    user.email = this.email;
+    this.authService.signUp(user)
   }
 
   backToLogin(){

@@ -25,6 +25,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.isClicked = true;
+    if(this.username === '' || this.password === ''){
+      return 
+    }
     this.loginService.login(this.username,this.password)
     // Add your login logic here, such as sending a request to your backend for authentication.
   }

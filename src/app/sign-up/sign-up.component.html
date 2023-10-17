@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container col-md-6">
     <div class="login-card">
       <mat-card class="mat-card">
         <mat-card-header style="justify-content: center;" class="m-button">
@@ -19,28 +19,28 @@
                 <div class="col-md-12">
                     <div class="col-md-12 text-danger"
                                 *ngIf="username == '' && isClicked">
-                                Username is required
+                                Email is required
                     </div>
                     <mat-form-field class="col-md-12">
-                        <input matInput placeholder="First Name" [(ngModel)]="username" name="username" required>
+                        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
                       </mat-form-field>
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-12 text-danger"
                                 *ngIf="username == '' && isClicked">
-                                Username is required
+                                First Name is required
                     </div>
                     <mat-form-field class="col-md-12">
-                        <input matInput placeholder="Last Name" [(ngModel)]="username" name="username" required>
+                        <input matInput placeholder="First Name" [(ngModel)]="firstName" name="firstName" required>
                       </mat-form-field>
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-12 text-danger"
                                 *ngIf="username == '' && isClicked">
-                                Username is required
+                                Last Name is required
                     </div>
                     <mat-form-field class="col-md-12">
-                        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                        <input matInput placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required>
                     </mat-form-field>
                 </div>
                 <div class="col-md-12">
