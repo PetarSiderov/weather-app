@@ -2,9 +2,43 @@
 <div class="container">
 
     <div class="row">
-        <form class="col-md-12 form-inline my-2 my-lg-0">
+        <form class="col-md-12 form-inline my-2 my-lg-0" style="padding: 40px;justify-content: center;">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+
+          <div class="row col-md-6" style="padding: 14px;" *ngFor="let element of daily">
+            <mat-card class="mat-elevation-z5">
+                <mat-card-header>
+                  <mat-card-title>London's weather</mat-card-title>
+                  <mat-card-subtitle>Today: {{element.dt}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content> 
+    
+                    <div class="flex-row">
+                        <div class="temp">
+                          <span>{{element.feels_like.morn}} F</span>
+                          <span>Feels like </span>
+                          <span>{{element.feels_like.day}} F</span>
+                        </div>
+                        <div class="outlook">
+                          <img src="http://openweathermap.org/img/wn/02d@2x.png" />
+                          <span>Few Clouds</span>
+                        </div>
+                  </div>
+                  <div class="temp">
+                    <span class="big-text">17 C</span>
+                    <span>Feels like </span>
+                    <span>12 C</span>
+                  </div>
+    
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button>LIKE</button>
+                  <button mat-button>SHARE</button>
+                </mat-card-actions>
+              </mat-card>
+          </div>
+         
     </div>
 </div>
