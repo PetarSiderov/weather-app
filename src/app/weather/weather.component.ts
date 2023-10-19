@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import {WeatherService} from './weather.service'
+import { WeatherResponse } from '../models/weather.model';
 
 @Component({
   selector: 'app-weather',
@@ -6,7 +9,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent {
-   elements: any
+    convertDate(date: any){
+        return new Date(date* 1000).toDateString();
+    }
     daily = [
       {
           dt: new Date(1697623200* 1000).toDateString(),
@@ -331,5 +336,35 @@ export class WeatherComponent {
           uvi: 4
       }
   ]
+
+  weatherFromApi?: WeatherResponse;
+  searchForm: FormGroup;
+  cityName?: string;
+  constructor(private formBuilder: FormBuilder, private weatherService: WeatherService,
+    private renderer: Renderer2, private elementRef: ElementRef) {
+    this.searchForm = this.formBuilder.group({
+      searchQuery: [''] // Initialize with an empty string
+    });
+  }
+
+  performSearch() {
+    const searchQuery = this.searchForm.getRawValue().searchQuery;
+    debugger
+    // You can implement your search logic here, e.g., call a search service or display the search results.
+    this.weatherService.getWeatherPrediction(searchQuery).subscribe((data: any) => {
+            debugger
+            this.weatherFromApi = data;
+            this.cityName = data.cityName;
+            let element;
+            if(document.getElementById('jumbotron_') != null){
+                element = document.getElementById("jumbotron_");
+                if (element) {
+                    element.style.height = 'auto !important';
+                  }
+            }
+
+    });
+    console.log(`Performing search for: ${searchQuery}`);
+  }
    
 }

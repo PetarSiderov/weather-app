@@ -20,6 +20,8 @@ import { WeatherComponent } from './weather/weather.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { WeatherService } from './weather/weather.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     SignUpComponent,
     WeatherComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
   ],
   exports: [LoginComponent],
-  providers: [AuthenticationService, LoginService],
+  providers: [AuthenticationService, LoginService,WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

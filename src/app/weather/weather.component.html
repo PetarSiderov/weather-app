@@ -2,35 +2,38 @@
 <div class="container">
 
     <div class="row">
-        <form class="col-md-12 form-inline my-2 my-lg-0" style="padding: 40px;justify-content: center;">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form class="col-md-12 form-inline my-2 my-lg-0" [formGroup]="searchForm" name="searchForm" style="padding: 40px;justify-content: center;">
+            <input class="form-control mr-sm-2" type="search" formControlName="searchQuery" name="searchQuery" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="performSearch()">Search</button>
           </form>
 
-          <div class="row col-md-6" style="padding: 14px;" *ngFor="let element of daily">
-            <mat-card class="mat-elevation-z5">
+          <div class="main-no-data" *ngIf="this.weatherFromApi === undefined">
+            <div class="empty-state-container">
+              <mat-icon class="icon">info</mat-icon>
+              <h3>No Data Found</h3>
+              <p>Sorry, there is no data to display at the moment.</p>
+            </div>
+          </div>
+
+          <div class="row col-md-6" style="padding: 14px;" *ngFor="let element of this.weatherFromApi?.dailyPrediction">
+            <mat-card class="col-md-11 mat-elevation-z5">
                 <mat-card-header>
-                  <mat-card-title>London's weather</mat-card-title>
-                  <mat-card-subtitle>Today: {{element.dt}}</mat-card-subtitle>
+                  <mat-card-title>{{this.cityName}} weather</mat-card-title>
+                  <mat-card-subtitle>{{this.convertDate(element.dt)}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content> 
     
                     <div class="flex-row">
                         <div class="temp">
-                          <span>{{element.feels_like.morn}} F</span>
+                          <span>{{element.feels_like?.morn}} F</span>
                           <span>Feels like </span>
-                          <span>{{element.feels_like.day}} F</span>
+                          <span>{{element.feels_like?.day}} F</span>
                         </div>
                         <div class="outlook">
                           <img src="http://openweathermap.org/img/wn/02d@2x.png" />
-                          <span>Few Clouds</span>
+                          <span>{{element?.summary}}</span>
                         </div>
-                  </div>
-                  <div class="temp">
-                    <span class="big-text">17 C</span>
-                    <span>Feels like </span>
-                    <span>12 C</span>
-                  </div>
+                    </div>
     
                 </mat-card-content>
                 <mat-card-actions>
