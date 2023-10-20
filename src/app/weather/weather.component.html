@@ -2,10 +2,15 @@
 <div class="container">
 
     <div class="row">
-        <form class="col-md-12 form-inline my-2 my-lg-0" [formGroup]="searchForm" name="searchForm" style="padding: 40px;justify-content: center;">
-            <input class="form-control mr-sm-2" type="search" formControlName="searchQuery" name="searchQuery" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="performSearch()">Search</button>
-          </form>
+      <div class="col-md-12 form-inline my-2 my-lg-0" style="padding: 40px;justify-content: center;">
+        <input type="text" class="form-control mr-sm-2" placeholder="Search" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions  | async" [value]="option.cityName">
+            {{ option.cityName }}
+          </mat-option>
+        </mat-autocomplete>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="performSearch()">Search</button>
+      </div>
 
           <div class="main-no-data" *ngIf="this.weatherFromApi === undefined">
             <div class="empty-state-container">

@@ -22,7 +22,7 @@ import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './weather/weather.service';
 import { FooterComponent } from './footer/footer.component';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +43,8 @@ import { FooterComponent } from './footer/footer.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatAutocompleteModule,
+    MatInputModule,
     BrowserAnimationsModule,
     MatCardModule,
     FormsModule,
