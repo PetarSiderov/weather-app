@@ -27,7 +27,6 @@ export class AuthenticationService {
         
         this.http.post<any>(this.url+`/api/Auth/sign-in`, user).subscribe(
           (data) => {
-            debugger
             if(data.token != null){
                 user.token = data.token
                 user.password = ''
@@ -67,7 +66,7 @@ export class AuthenticationService {
     signUp(user: User){
         this.http.post<any>(this.url+`/api/Auth/register`, user).subscribe(
             (data) => {
-              debugger
+              
               if(data.data == 'User is created') {
 
                 Swal.fire({

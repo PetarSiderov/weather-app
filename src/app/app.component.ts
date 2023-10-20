@@ -25,7 +25,6 @@ export class AppComponent extends Component implements OnInit {
   }
   ngOnInit(): void {
     this.authservice.isLoggedUser?.subscribe(s => {
-      debugger
       if (Object.keys(s).length) {
         this.isLogged = true;
         this.router.navigate(["/weather"])

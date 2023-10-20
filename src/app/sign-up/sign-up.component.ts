@@ -23,7 +23,6 @@ export class SignUpComponent {
   }
 
   signup() {
-    debugger
     this.isClicked = true;
     if(this.email == '' || this.firstName == '' ||  this.lastName == '' ||  this.email == '' || this.password == ''){
       return;
