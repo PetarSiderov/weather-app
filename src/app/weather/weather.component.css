@@ -60,11 +60,6 @@ mat-card::ng-deep.mat-card-header-text {
       }
   }
 
-.col-md-6 {
-    flex: 0 0 50%;
-    max-width: 35%;
-}
-
 .empty-state-container {
   display: flex;
   flex-direction: column;
@@ -79,6 +74,13 @@ mat-card::ng-deep.mat-card-header-text {
       margin-left: 25%;
       margin-bottom: calc(100% - 60%) !important;
   }
+
+  
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 35%;
+}
+
 }
 @media (min-width: 960px){
   .main-no-data{
@@ -87,6 +89,12 @@ mat-card::ng-deep.mat-card-header-text {
       margin-left: 25%;
       margin-bottom: calc(100% - 90%);
   }
+  
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 35%;
+}
+
 }
 
 .icon {

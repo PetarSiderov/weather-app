@@ -21,7 +21,7 @@
           </div>
 
           <div class="row col-md-6" style="padding: 14px;" *ngFor="let element of this.weatherFromApi?.dailyPrediction">
-            <mat-card class="col-md-11 mat-elevation-z5">
+            <mat-card class="col-sm-12 col-md-11 mat-elevation-z5">
                 <mat-card-header>
                   <mat-card-title>{{this.cityName}} weather</mat-card-title>
                   <mat-card-subtitle>{{this.convertDate(element.dt)}}</mat-card-subtitle>
