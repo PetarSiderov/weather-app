@@ -69,9 +69,6 @@ mat-card::ng-deep.mat-card-header-text {
 }
 @media screen and (min-width: 1300px) and (max-width: 3000px) {
   .main-no-data{
-    display: flex;
-      justify-content: center;
-      margin-left: 25%;
       margin-bottom: calc(100% - 60%) !important;
   }
 
@@ -84,9 +81,6 @@ mat-card::ng-deep.mat-card-header-text {
 }
 @media (min-width: 960px){
   .main-no-data{
-    display: flex;
-      justify-content: center;
-      margin-left: 25%;
       margin-bottom: calc(100% - 90%);
   }
   

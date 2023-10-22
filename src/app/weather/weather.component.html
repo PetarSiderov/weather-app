@@ -12,7 +12,7 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="performSearch()">Search</button>
       </div>
 
-          <div class="main-no-data" *ngIf="this.weatherFromApi === undefined">
+          <div class="col-md-12 col-sm-12 main-no-data" *ngIf="this.weatherFromApi === undefined">
             <div class="empty-state-container">
               <mat-icon class="icon">info</mat-icon>
               <h3>No Data Found</h3>
