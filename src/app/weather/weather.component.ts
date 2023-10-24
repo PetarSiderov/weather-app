@@ -61,16 +61,21 @@ export class WeatherComponent {
     
     // You can implement your search logic here, e.g., call a search service or display the search results.
     this.weatherService.getWeatherPrediction(search).subscribe((data: any) => {
-            this.weatherFromApi = data;
-            this.cityName = data.cityName;
-            let element;
-            if(document.getElementById('jumbotron_') != null){
-                element = document.getElementById("jumbotron_");
-                if (element) {
-                    element.style.height = 'auto !important';
-                  }
+      debugger
+            if(data.data !== undefined){
+              this.weatherFromApi = undefined
             }
-
+            else{
+              this.weatherFromApi = data;
+              this.cityName = data.cityName;
+              let element;
+              if(document.getElementById('jumbotron_') != null){
+                  element = document.getElementById("jumbotron_");
+                  if (element) {
+                      element.style.height = 'auto !important';
+                    }
+              }
+            }
     });
     console.log(`Performing search for: ${search}`);
   }
